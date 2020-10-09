@@ -1,0 +1,64 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 25
+        targetSdkVersion 29
+        versionCode aptVersionCode
+        versionName '0.1'
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+
+    implementation "android.ztone:ztone-lang:0.3.65"
+    implementation 'com.squareup.okio:okio:1.14.0'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+
+// push to bintray
+ext {
+    archiveSourceJar = false
+    archiveJavaDocJar = false
+    bintrayOverride = true
+
+    bintrayOrg = 'ztone'
+    // bintray中创建的package name
+    bintrayName = 'ztone-loople'
+
+    libraryName = 'Ztone Loople'
+    publishedGroupId = 'android.ztone'
+    artifact = 'ztone-loople'
+    libraryVersion = android.defaultConfig.versionName
+
+    libraryDescription = 'Ztone Loople'
+
+    siteUrl = 'https://github.com/cvdnn/ZtoneLoople'
+    gitUrl = 'https://github.com/cvdnn/ZtoneLoople.git'
+}
+
+apply from: 'pom_build.gradle'
+apply from: 'push_to_bintray.gradle'

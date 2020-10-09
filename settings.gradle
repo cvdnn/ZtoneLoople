@@ -1,2 +1,3 @@
+include ':ztone-loople'
 include ':app'
 rootProject.name = "ZtoneLoople"

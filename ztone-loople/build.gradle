@@ -31,7 +31,7 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
 
-    implementation "android.ztone:ztone-lang:0.4.1"
+    implementation "android.ztone:ztone-lang:0.4.2"
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

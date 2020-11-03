@@ -7,7 +7,7 @@ android {
         minSdkVersion 24
         targetSdkVersion 28
         versionCode aptVersionCode
-        versionName '0.1.2'
+        versionName '0.1.4'
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -31,7 +31,7 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
 
-    implementation "android.ztone:ztone-lang:0.4.2"
+    implementation "com.cvdnn:android-lang:0.5.0"
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
@@ -44,16 +44,16 @@ ext {
     archiveJavaDocJar = false
     bintrayOverride = true
 
-    bintrayOrg = 'ztone'
+    bintrayOrg = 'cvdnn'
     // bintray中创建的package name
-    bintrayName = 'ztone-loople'
+    bintrayName = 'android-loople'
 
-    libraryName = 'Ztone Loople'
-    publishedGroupId = 'android.ztone'
-    artifact = 'ztone-loople'
+    libraryName = 'Android Loople'
+    publishedGroupId = 'com.cvdnn'
+    artifact = 'android-loople'
     libraryVersion = android.defaultConfig.versionName
 
-    libraryDescription = 'Ztone Loople'
+    libraryDescription = 'Android Loople'
 
     siteUrl = 'https://github.com/cvdnn/ZtoneLoople'
     gitUrl = 'https://github.com/cvdnn/ZtoneLoople.git'

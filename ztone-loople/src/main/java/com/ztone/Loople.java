@@ -52,12 +52,27 @@ public class Loople {
          * @return
          */
         public <O> boolean demand(@NonNull O o, @NonNull String methodName, Class<?>... parameterTypes) {
+
+            return demand(o, null, methodName, parameterTypes);
+        }
+
+        /**
+         * 验证是否需要在主线程中执行
+         *
+         * @param o
+         * @param methodName
+         * @param parameterTypes
+         * @param <O>
+         *
+         * @return
+         */
+        public <O> boolean demand(@NonNull O o, Class<?> clazz, @NonNull String methodName, Class<?>... parameterTypes) {
             boolean result = false;
 
             if (o != null) {
                 try {
-                    Class<?> clazz = o.getClass();
-                    Method method = clazz.getMethod(methodName, parameterTypes);
+                    Class<?> cls = clazz == null ? o.getClass() : clazz;
+                    Method method = cls.getMethod(methodName, parameterTypes);
                     if (method != null) {
                         MainThread ann = method.getAnnotation(MainThread.class);
                         if (ann != null) {

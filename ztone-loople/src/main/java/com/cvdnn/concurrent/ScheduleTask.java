@@ -1,6 +1,6 @@
-package com.ztone.concurrent;
+package com.cvdnn.concurrent;
 
-import com.ztone.Loople;
+import com.cvdnn.Loople;
 
 import java.util.concurrent.Future;
 
@@ -31,6 +31,6 @@ public abstract class ScheduleTask implements Runnable {
     }
 
     public void stop() {
-        mRunFuture = Loople.cancel(mRunFuture);
+        mRunFuture = Loople.Task.cancel(mRunFuture);
     }
 }

@@ -1,4 +1,4 @@
-package com.ztone.exception;
+package com.cvdnn.exception;
 
 public class OnMainThreadException extends RuntimeException {
 

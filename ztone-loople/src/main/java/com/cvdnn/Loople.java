@@ -1,4 +1,4 @@
-package com.ztone;
+package com.cvdnn;
 
 import android.annotation.SuppressLint;
 import android.os.Handler;
@@ -8,8 +8,8 @@ import android.util.Log;
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 
-import com.ztone.concurrent.TaskPoolExecutor;
-import com.ztone.exception.OnMainThreadException;
+import com.cvdnn.concurrent.TaskPoolExecutor;
+import com.cvdnn.exception.OnMainThreadException;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -158,6 +158,22 @@ public class Loople {
             Pool.scheduleWithFixedDelay(r, initTime, delayMillis, MILLISECONDS);
         }
 
+        public final Future<?> cancel(Future<?>... futures) {
+            if (futures != null) {
+                try {
+                    for (Future<?> f : futures) {
+                        if (f != null) {
+                            f.cancel(true);
+                        }
+                    }
+                } catch (Exception e) {
+                    Log.e(TAG, e.getMessage(), e);
+                }
+            }
+
+            return null;
+        }
+
         public final void shutdown() {
             try {
                 Pool.shutdownNow();
@@ -168,18 +184,6 @@ public class Loople {
 
         private TaskHandle() {
         }
-    }
-
-    public static Future<?> cancel(Future<?> future) {
-        if (future != null) {
-            try {
-                future.cancel(true);
-            } catch (Exception e) {
-                Log.e(TAG, e.getMessage(), e);
-            }
-        }
-
-        return null;
     }
 
     public static void logPoolNum() {
